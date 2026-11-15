@@ -215,9 +215,22 @@ el.epochSlider.addEventListener("input", () => {
   showEpoch(Number(el.epochSlider.value));
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-  loadPresets();
+function initAladin() {
+  const container = document.getElementById("aladin-div");
   if (window.A && typeof window.A.aladin === "function") {
     aladin = A.aladin("#aladin-div", { survey: "P/DSS2/color", fov: 0.2 });
+    return;
   }
+  // El CDN de CDS (aladin.cds.unistra.fr) a veces esta caido; este panel es
+  // solo contexto visual, no bloquea busqueda/play/blink si no carga.
+  container.innerHTML =
+    '<p style="padding:1rem;color:#9aa3b8;font-size:0.85rem;">' +
+    "Aladin Lite no disponible (el CDN de CDS no respondio). " +
+    "El resto de la app funciona igual." +
+    "</p>";
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadPresets();
+  initAladin();
 });
