@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Planet X and SPHEREx</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.min.css" />
+</head>
+<body>
+<header>
+  <h1>Planet X and SPHEREx</h1>
+  <p class="subtitle">Mini-video de imagenes del cielo de SPHEREx para detectar objetos que se mueven o varian.</p>
+</header>
+
+<main>
+  <section class="controls">
+    <label>
+      Objeto de prueba
+      <select id="preset-select">
+        <option value="">-- elegir --</option>
+      </select>
+    </label>
+
+    <label>
+      RA (grados decimales)
+      <input id="ra-input" type="number" step="0.000001" />
+    </label>
+
+    <label>
+      Dec (grados decimales)
+      <input id="dec-input" type="number" step="0.000001" />
+    </label>
+
+    <label>
+      Radio de busqueda (grados)
+      <input id="radius-input" type="number" step="0.01" value="0.05" />
+    </label>
+
+    <label class="demo-toggle">
+      <input id="demo-mode" type="checkbox" />
+      Modo demo offline (datos simulados)
+    </label>
+
+    <button id="search-btn">Buscar epocas</button>
+    <span id="status-msg"></span>
+  </section>
+
+  <div id="demo-banner" class="demo-banner" hidden>
+    MODO DEMO: estas viendo imagenes SIMULADAS, no observaciones reales de SPHEREx.
+    Se usan solo para probar la interfaz cuando IRSA no esta disponible.
+  </div>
+
+  <section class="viewer">
+    <div class="viewer-main">
+      <img id="viewer-image" alt="Recorte de SPHEREx" />
+      <div class="viewer-controls">
+        <button id="play-btn">Play</button>
+        <input id="epoch-slider" type="range" min="0" max="0" value="0" />
+        <span id="epoch-label">sin datos</span>
+      </div>
+      <div class="blink-controls">
+        <label>Blink A <select id="blink-a"></select></label>
+        <label>Blink B <select id="blink-b"></select></label>
+        <button id="blink-btn">Blink A/B</button>
+      </div>
+    </div>
+
+    <div id="aladin-div" class="aladin-panel"></div>
+  </section>
+
+  <section>
+    <h2>Epocas encontradas</h2>
+    <table id="epochs-table">
+      <thead>
+        <tr><th>#</th><th>obs_id</th><th>coleccion</th><th>t_min (MJD)</th><th>t_max (MJD)</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</main>
+
+<script src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
+<script src="app.js"></script>
+</body>
+</html>
