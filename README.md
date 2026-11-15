@@ -3,6 +3,11 @@
 Skeleton funcional para el challenge NASA Space Apps 2026 "Planet X and SPHEREx".
 Ver [PLAN.md](PLAN.md) para el plan completo (roadmap, riesgos, referencias).
 
+**Nota sobre uso de IA:** parte del codigo y la documentacion de este proyecto
+se desarrollo con asistencia de herramientas de inteligencia artificial
+(generacion de codigo asistida). Las decisiones de diseno, validacion de datos
+y revision final fueron hechas por el equipo.
+
 ## Estructura
 
 ```
